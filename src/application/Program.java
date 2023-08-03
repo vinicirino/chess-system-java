@@ -44,6 +44,12 @@ public class Program {
 				if(capturedPiece != null) {
 					captured.add(capturedPiece);
 				}
+				
+				if (chessMatch.getPromoted() != null) {
+					System.out.println("Enter piece for promorion (B/N/R/Q):");
+					String type = sc.nextLine();
+					chessMatch.replacePromotedPiece(type);
+				}
 			
 			
 			}catch(ChessException e){
