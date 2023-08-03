@@ -19,12 +19,9 @@ public class Program {
 		ChessMatch chessMatch = new ChessMatch();
 		List<ChessPiece> captured = new ArrayList<>();
 		
-		
-		
 		while (!chessMatch.getCheckMate()) {
 			try {
 				
-		
 				UI.clearScreen();
 				UI.printMach(chessMatch, captured);
 				System.out.println();
@@ -47,10 +44,14 @@ public class Program {
 				
 				if (chessMatch.getPromoted() != null) {
 					System.out.println("Enter piece for promorion (B/N/R/Q):");
-					String type = sc.nextLine();
+					String type = sc.nextLine().toUpperCase();	
+					while(!type.equals("B") && !type.equals("N") && !type.equals("R") && !type.equals("Q")) {
+						System.out.println("Invalid value! Enter piece for promorion (B/N/R/Q):");
+						type = sc.nextLine().toUpperCase();	
+					}
+					
 					chessMatch.replacePromotedPiece(type);
 				}
-			
 			
 			}catch(ChessException e){
 				System.out.println(e.getMessage());
@@ -62,6 +63,5 @@ public class Program {
 		}
 		UI.clearScreen();
 		UI.printMach(chessMatch, captured);
-
 	}
 }
